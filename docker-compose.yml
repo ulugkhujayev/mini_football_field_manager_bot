@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  bot:
+    build: .
+    container_name: aiogram_bot
+    environment:
+      - API_TOKEN=${API_TOKEN}
+      - ADMIN_IDS=${ADMIN_IDS}
+      - PHONE_NUMBER=${PHONE_NUMBER}
+    volumes:
+      - .:/app
+      - sqlite-db:/app/bookings.db
+    ports:
+      - "8443:8443"
+
+volumes:
+  sqlite-db:
+
